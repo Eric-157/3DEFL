@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    // element 0 should always be the base room. 1-whatever is adjacent rooms.
     public List<GameObject> zones;
     public GameObject enemy;
     public bool enemyDestroyed;
     public Vector3 startPos;
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,5 +24,16 @@ public class SpawnManager : MonoBehaviour
         // make a counting for loop, make the base room 0 and make an if check for 0, if an enemy is in the trigger, don't spawn, if player is in the trigger, also don't spawn
         // if the count is more than 0, check if player is in the trigger, if so then don't spawn
         // if neither is met, then spawn an enemy.
+        for (int i = 0; i < zones.Count; i++)
+        {
+            if (zones[i].name == player.GetComponent<Movement>().currentRoom)
+            {
+                
+            }
+            if (zones[0].name == enemy.GetComponent<Enemy>().currentRoom)
+            {
+                
+            }
+        }
     }
 }

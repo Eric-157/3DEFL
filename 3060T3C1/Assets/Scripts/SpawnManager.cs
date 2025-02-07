@@ -7,14 +7,12 @@ public class SpawnManager : MonoBehaviour
     // element 0 should always be the base room. 1-whatever is adjacent rooms.
     public List<GameObject> zones;
     public GameObject enemy;
-    public bool enemyDestroyed;
     public Vector3 startPos;
     public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
         startPos = transform.position;
-        enemyDestroyed = false;
     }
 
     // Update is called once per frame
@@ -26,13 +24,10 @@ public class SpawnManager : MonoBehaviour
         // if neither is met, then spawn an enemy.
         for (int i = 0; i < zones.Count; i++)
         {
-            if (zones[i].name == player.GetComponent<Movement>().currentRoom)
+            if (zones[i].name != player.GetComponent<Movement>().currentRoom && zones[0].name != enemy.GetComponent<Enemy>().currentRoom)
             {
-                
-            }
-            if (zones[0].name == enemy.GetComponent<Enemy>().currentRoom)
-            {
-                
+                Instantiate(enemy, startPos, Quaternion.identity);
+                break;
             }
         }
     }

@@ -10,26 +10,53 @@ public class Movement : MonoBehaviour
     public string currentRoom;
     public Rigidbody rb;
 
-    
+    private Camera mainCamera;
+
+    private Vector3 mousePos;
+
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        mainCamera = FindObjectOfType<Camera>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // There is a bug with movement and colliders, you can phase through certain corners, will fix in a later version.
         verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
         rb.MovePosition(transform.position + (transform.forward * verticalInput * speed * Time.deltaTime) + (transform.right * horizontalInput * speed * Time.deltaTime));
+
+        mousePos = Input.mousePosition;
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit raycastHit;
+            Ray ray = mainCamera.ScreenPointToRay(mousePos);
+            if (Physics.Raycast(ray, out raycastHit, 1000f))
+            {
+                if (raycastHit.transform != null)
+                {
+                    CurrentClickedGameObject(raycastHit.transform.gameObject);
+                }
+            }
+        }
     }
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("zone"))
         {
             currentRoom = other.gameObject.name;
+        }
+    }
+
+    public void CurrentClickedGameObject(GameObject gameObject)
+    {
+        if (gameObject.tag == "enemy")
+        {
+            Destroy(gameObject);
+
         }
     }
 }

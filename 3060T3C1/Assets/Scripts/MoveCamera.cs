@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Camera : MonoBehaviour
+public class MoveCamera : MonoBehaviour
 {
     private float rotationY = 0f;
     private float sensitivity = 2f;

@@ -16,6 +16,7 @@ public class MoveCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Cursor.visible = true;
         float inputY = Input.GetAxis("Mouse Y") * sensitivity;
         float inputX = Input.GetAxis("Mouse X") * sensitivity;
         rotationY -= inputY;

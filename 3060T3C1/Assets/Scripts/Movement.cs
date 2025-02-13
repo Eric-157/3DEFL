@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    private float speed = 5.0f;
+    private float speed = 2.0f;
     public float horizontalInput;
     public float verticalInput;
     public string currentRoom;
@@ -34,13 +34,17 @@ public class Movement : MonoBehaviour
         {
             RaycastHit raycastHit;
             Ray ray = mainCamera.ScreenPointToRay(mousePos);
-            if (Physics.Raycast(ray, out raycastHit, 1000f))
+            if (Physics.Raycast(ray, out raycastHit, 3f))
             {
                 if (raycastHit.transform != null)
                 {
                     CurrentClickedGameObject(raycastHit.transform.gameObject);
                 }
             }
+        }
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
         }
     }
     private void OnTriggerStay(Collider other)

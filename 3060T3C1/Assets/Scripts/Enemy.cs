@@ -6,9 +6,9 @@ public class Enemy : MonoBehaviour
 {
     public string currentRoom;
     private GameObject player;
-    private float chaseRange = 5f;
+    private float chaseRange = 4f;
 
-    private float movementSpeed = 1f;
+    private float movementSpeed = 0.8f;
 
     // Start is called before the first frame update
     void Start()

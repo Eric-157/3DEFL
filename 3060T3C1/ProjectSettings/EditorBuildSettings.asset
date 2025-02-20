@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/CastleOutline.unity
-    guid: 9c5ace9c094dc9d459299bf4c9351563
+    path: Assets/Scenes/Castle Revised.unity
+    guid: 20567cd0b8ff6024a8aa60e46b3b97bd
   m_configObjects: {}

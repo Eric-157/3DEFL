@@ -34,7 +34,7 @@ public class Movement : MonoBehaviour
         {
             RaycastHit raycastHit;
             Ray ray = mainCamera.ScreenPointToRay(mousePos);
-            if (Physics.Raycast(ray, out raycastHit, 3f))
+            if (Physics.Raycast(ray, out raycastHit, 2.5f))
             {
                 if (raycastHit.transform != null)
                 {
